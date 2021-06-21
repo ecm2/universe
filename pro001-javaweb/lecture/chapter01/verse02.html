@@ -1,0 +1,609 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-fences-math .MathJax_SVG_Display, .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: visible; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; zoom: 90%; }
+#math-inline-preview-content { zoom: 1.1; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-math .MathJax_SVG_Display { margin-top: 8px; cursor: default; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>verse02</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#第四节-拜托了大脑">第四节 拜托了大脑</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#0学习中的痛点问题">0、学习中的痛点问题</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1人和人的差异是系统的差异">1、人和人的差异是『系统』的差异</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#①起点路径目标">①起点、路径、目标</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#②思维跃迁">②思维跃迁</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1穿透现象看到本质">[1]穿透现象看到本质</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2宏观视野">[2]宏观视野</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3目标导向">[3]目标导向</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4抽象空间">[4]抽象空间</a></div><ul class="outline-children"></ul></li></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2学习能力就是一个系统">2、『学习能力』就是一个系统</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#①敞开心扉">①敞开心扉</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#②大脑的工作机制">②大脑的工作机制</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1大脑的结构">[1]大脑的结构</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2死记硬背">[2]死记硬背？</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3外接硬盘">[3]外接硬盘</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4快思维和慢思维">[4]快思维和慢思维</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#③知识的知识元知识">③知识的知识：元知识</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#1知识点">[1]知识点</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#2前置知识">[2]前置知识</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#3知识链">[3]知识链</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#4知识树">[4]知识树</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#5知识网络">[5]知识网络</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#6知识体系">[6]知识体系</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#④卖油翁的微笑">④卖油翁的微笑</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#⑤输出倒逼输入">⑤输出倒逼输入</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#⑥总结">⑥总结</a></div><ul class="outline-children"></ul></li></ul></li></ul></li></div></div><div id='write'  class=''><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n2"><a class="md-toc-inner" href="#第四节-拜托了大脑">第四节 拜托了大脑</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3"><a class="md-toc-inner" href="#0学习中的痛点问题">0、学习中的痛点问题</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n16"><a class="md-toc-inner" href="#1人和人的差异是系统的差异">1、人和人的差异是『系统』的差异</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n17"><a class="md-toc-inner" href="#①起点路径目标">①起点、路径、目标</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n29"><a class="md-toc-inner" href="#②思维跃迁">②思维跃迁</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n32"><a class="md-toc-inner" href="#1穿透现象看到本质">[1]穿透现象看到本质</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n37"><a class="md-toc-inner" href="#2宏观视野">[2]宏观视野</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n40"><a class="md-toc-inner" href="#3目标导向">[3]目标导向</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n43"><a class="md-toc-inner" href="#4抽象空间">[4]抽象空间</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n74"><a class="md-toc-inner" href="#2学习能力就是一个系统">2、『学习能力』就是一个系统</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n77"><a class="md-toc-inner" href="#①敞开心扉">①敞开心扉</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n100"><a class="md-toc-inner" href="#②大脑的工作机制">②大脑的工作机制</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n101"><a class="md-toc-inner" href="#1大脑的结构">[1]大脑的结构</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n110"><a class="md-toc-inner" href="#2死记硬背">[2]死记硬背？</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n141"><a class="md-toc-inner" href="#3外接硬盘">[3]外接硬盘</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n148"><a class="md-toc-inner" href="#4快思维和慢思维">[4]快思维和慢思维</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n155"><a class="md-toc-inner" href="#③知识的知识元知识">③知识的知识：元知识</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n156"><a class="md-toc-inner" href="#1知识点">[1]知识点</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n160"><a class="md-toc-inner" href="#2前置知识">[2]前置知识</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n165"><a class="md-toc-inner" href="#3知识链">[3]知识链</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n169"><a class="md-toc-inner" href="#4知识树">[4]知识树</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n176"><a class="md-toc-inner" href="#5知识网络">[5]知识网络</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n182"><a class="md-toc-inner" href="#6知识体系">[6]知识体系</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n209"><a class="md-toc-inner" href="#④卖油翁的微笑">④卖油翁的微笑</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n219"><a class="md-toc-inner" href="#⑤输出倒逼输入">⑤输出倒逼输入</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n237"><a class="md-toc-inner" href="#⑥总结">⑥总结</a></span></p></div><h1 id='第四节-拜托了大脑'><span>第四节 拜托了大脑</span></h1><h2 id='0学习中的痛点问题'><span>0、学习中的痛点问题</span></h2><ul><li><span>为什么明明很努力了，但就是没效果？</span></li><li><span>学完记不住怎么办？</span></li><li><span>每天上课老师讲的代码我也都敲（抄）了，但是感觉什么都没学会怎么办？</span></li><li><span>为什么学着学着会感觉跟不上了？</span></li><li><span>学的东西太多感觉非常混乱怎么办？</span></li></ul><p>&nbsp;</p><h2 id='1人和人的差异是系统的差异'><span>1、人和人的差异是『系统』的差异</span></h2><h3 id='①起点路径目标'><span>①起点、路径、目标</span></h3><p><span>为什么同样是毕业5年，你和你的同学差距特别大？起点、路径、目标这三个东西哪个对人影响最大？</span></p><ul><li><span>目标：有的人目标是1亿，有的人目标是够吃饭就行。目标不同活法肯定不同。</span></li><li><span>路径：有的人根本不知道路在哪，有的人靠两条腿狂奔，有的人开汽车，有的人坐飞机，有的人坐火箭。</span></li><li><span>起点：最不重要的就是起点。对那些靠两条腿跑的人来说，10公里是非常遥远的距离，但是对开汽车的人来说很近。</span></li></ul><p><span>如果一个问题的解决办法已经</span><span style="color:blue;font-weight:bold;"><span>有别人反复验证过可行、有效的路径存在</span></span><span>，那这种问题就非常容易解决。但即使这样不同的人应对同样问题时效果也完全不同。从深圳到北京，徒步、开车、高铁、飞机就是效率完全不同的解决方案。</span></p><p><span>在路上使用的</span><span style="color:blue;font-weight:bold;"><span>交通工具</span></span><span>不同就是人和人之间</span><span style="color:blue;font-weight:bold;"><span>系统</span></span><span>的不同，而系统其实就是一个人的</span><span style="color:blue;font-weight:bold;"><span>认知水平、思维方式、学习和工作的方法</span></span><span>。</span></p><p>&nbsp;</p><h3 id='②思维跃迁'><span>②思维跃迁</span></h3><p><span>世界本身是极其复杂的，即使是细分之后的领域仍然非常复杂，比如一颗小小的芯片背后就是一个非常庞大、复杂的体系：科学、技术、设计、制造、供应链、操作系统、市场等等。面对这么复杂的世界，简单的思维方式是没法理解和应对的。而比我们成功的人一定是从更底层把握了</span><span style="color:blue;font-weight:bold;"><span>复杂世界中简单规律</span></span><span>的人。</span></p><p>&nbsp;</p><h4 id='1穿透现象看到本质'><span>[1]穿透现象看到本质</span></h4><p><span>实现同一个功能，代码可以有很多种不同的写法，我们要做的并不是把某一种代码背下来，而是</span><span style="color:blue;font-weight:bold;"><span>直击本质</span></span><span>，</span><span style="color:blue;font-weight:bold;"><span>把握规律</span></span><span>，</span><span style="color:blue;font-weight:bold;"><span>以不变应万变</span></span><span>。</span></p><p><img src="images/img015.jpg" referrerpolicy="no-referrer" alt="images"></p><p>&nbsp;</p><p>&nbsp;</p><h4 id='2宏观视野'><span>[2]宏观视野</span></h4><p><span>将来大家走上工作岗位，参与开发都是非常庞大的系统，此时要求大家能够把视角拔高，</span><span style="color:blue;font-weight:bold;"><span>从最高处俯瞰整个项目的架构</span></span><span>。而在具体的开发过程中对于微观的代码编写和故障调试又要求能够做到细致认真，对程序员来说这两种看似矛盾的能力必须同时具备。</span></p><p>&nbsp;</p><h4 id='3目标导向'><span>[3]目标导向</span></h4><p><span>任何项目、任何技术都是为了解决实际问题而生的，所以我们不论是在技术学习过程中还是在项目开发过程中都要锻炼自己理解需求的能力和根据需求设定目标的能力。有了明确的</span><span style="color:blue;font-weight:bold;"><span>目标</span></span><span>下一步才能一步一步分析出实现目标的</span><span style="color:blue;font-weight:bold;"><span>思路</span></span><span>，然后根据思路中的各个环节编写</span><span style="color:blue;font-weight:bold;"><span>代码</span></span><span>，最终把需求落地实现。</span></p><p>&nbsp;</p><h4 id='4抽象空间'><span>[4]抽象空间</span></h4><p><span>一个人每天按时上课，按时自习，从不违纪，身体确实在教室，但是灵魂早已不知到哪里游荡，他算努力吗？</span></p><p><span>一个人把老师的代码抄了一遍又一遍，把课件背了一回又一回，他算努力吗？</span></p><p><span>一个人顶着狂风烈日面试了一家又一家公司，屡战屡败，屡败屡战，他算努力吗？</span></p><p>&nbsp;</p><p><span>另一个人看着好像也没怎么努力，该打球打球，该拍拖拍拖，面试没几家就拿到N个不错的offer，老师劝他不着急入职，再多面几家肯定有更好的，他说现在这个不错了，懒的面了。你好像确实没法说他</span><span style="color:blue;font-weight:bold;"><span>『努力』</span></span><span>，但是你不得不承认至少单纯在</span><span style="color:blue;font-weight:bold;"><span>『参加培训找工作』</span></span><span>这一件事上他很</span><span style="color:red;font-weight:bold;"><span>『成功』</span></span><span>。</span></p><p>&nbsp;</p><p><span>所以老师不必费力向你证明前面那三个人并没有</span><span style="color:blue;font-weight:bold;"><span>『真正努力』</span></span><span>，而只是</span><span style="color:blue;font-weight:bold;"><span>『用战术上的勤奋掩盖战略上的懒惰』</span></span><span>——老师希望你注意到：即使是</span><span style="color:blue;font-weight:bold;"><span>『真正的努力』</span></span><span>仍然只是</span><span style="color:blue;font-weight:bold;"><span>『手段』</span></span><span>而不是</span><span style="color:blue;font-weight:bold;"><span>『目的』</span></span><span>，我们真正的目的是</span><span style="color:blue;font-weight:bold;"><span>『成功』</span></span><span>。不管过程中再怎么努力，最后达不成目的不还是白搭？当然，如果因此你得出一个结论就是那我不用努力了我也没有办法，毕竟谁都没法叫醒一个装睡的人不是？</span></p><p>&nbsp;</p><p><span>那怎么做算是</span><span style="color:blue;font-weight:bold;"><span>『战略正确』</span></span><span>呢？</span></p><p>&nbsp;</p><p><span>进军</span><span style="color:blue;font-weight:bold;"><span>抽象空间</span></span><span>，到抽象空间里占领一个又一个知识高地。</span></p><p>&nbsp;</p><p><span style="color:blue;font-weight:bold;"><span>学习的真正过程发生在人的意识中</span></span><span>，而意识是</span><span style="color:blue;font-weight:bold;"><span>看不见、摸不着</span></span><span>的。所以当一个同学『人在教室、神游天外』时，老师明知道他没在学习可是还真不好说啥，因为他确实没有违反纪律。纪律只能在物质世界设置规则，而没法限制你的想法。</span></p><p>&nbsp;</p><p><span>但所谓知识其实就是人类认识世界过程中总结、提炼的结晶，全部都是</span><span style="color:blue;font-weight:bold;"><span>抽象的概念</span></span><span>，同样看不见、摸不着。我们上课的过程就是老师把他自己的意识空间用声音和图像投影到教室里，然后再投影到你的意识空间——毕竟老师没法双掌贴着你的后背把毕生功力传给你。</span></p><p>&nbsp;</p><p><span>大家需要</span><span style="color:blue;font-weight:bold;"><span>接收</span></span><span>到声音和图像的</span><span style="color:blue;font-weight:bold;"><span>信号</span></span><span>，然后</span><span style="color:blue;font-weight:bold;"><span>理解</span></span><span>它们的</span><span style="color:blue;font-weight:bold;"><span>含义</span></span><span>，再重新</span><span style="color:blue;font-weight:bold;"><span>凝练</span></span><span>成一个一个的概念</span><span style="color:blue;font-weight:bold;"><span>结晶</span></span><span>，最后还要分门别类、井然有序的</span><span style="color:blue;font-weight:bold;"><span>保存</span></span><span>起来以备将来使用。</span></p><p>&nbsp;</p><p><span>所以学习真要比的话应该比的就是在意识空间中</span><span style="color:blue;font-weight:bold;"><span>知识晶体的</span><span style="color:red;font-weight:bold;"><span>数量</span></span><span>和</span><span style="color:red;font-weight:bold;"><span>秩序</span></span></span><span>。</span></p><p>&nbsp;</p><p><span>很多人为什么学习起来非常吃力？就是因为他完全没有办法进入抽象空间，完全没法理解任何抽象的东西。这里我们举个例子：</span></p><p>&nbsp;</p><p><span>具象：3×2=6，2×3=6，4×7=28，7×4=28，…… </span></p><p>&nbsp;</p><p><span>抽象：乘法交换律</span></p><p>&nbsp;</p><p><span>用具象的算式描述这个规律可以写出无限多个，可是用抽象的规律短短五个字就概括了。这就是掌握规律的力量，这就是为什么培根说『知识就是力量』。好在老师会用</span><span style="color:blue;font-weight:bold;"><span>举例、类比、画图等等手段把抽象的东西尽量具象化</span></span><span>，但是谁也代替不了你自己的理解、提炼和总结。不过好消息是现在你知道怎么努力了。</span></p><p>&nbsp;</p><p><span>所以各位朝气蓬勃的少男少女们，充分调动起你活跃的大脑，一起来提炼闪闪发光的知识晶体吧！</span></p><p>&nbsp;</p><h2 id='2学习能力就是一个系统'><span>2、『学习能力』就是一个系统</span></h2><p><img src="images/img014.png" referrerpolicy="no-referrer" alt="images"></p><p>&nbsp;</p><h3 id='①敞开心扉'><span>①敞开心扉</span></h3><p><span>你真的对技术感兴趣吗？</span></p><p>&nbsp;</p><p><span>小明拿瓶子去接水，咕咚咕咚一通灌。完事儿一看，瓶子里一滴水都没有。</span></p><p>&nbsp;</p><p><span>为啥？瓶塞没有拔出来。</span></p><p>&nbsp;</p><p><span>像不像你叫嚷着学Java，但其实真正的内心对Java没有任何兴趣，只是因为听说它很赚钱才学。你</span><span style="color:blue;font-weight:bold;"><span>『真正喜欢』</span></span><span>的是</span><span style="color:blue;font-weight:bold;"><span>『钱』</span></span><span>而不是</span><span style="color:blue;font-weight:bold;"><span>『Java』</span></span><span>。</span></p><p>&nbsp;</p><p><span>而真正学的时候内心是</span><span style="color:blue;font-weight:bold;"><span>『抗拒』</span></span><span>的，你觉得这东西和你一点关系都没有。禁闭的心扉如同没有拔掉木塞的瓶子。这样谁都帮不了你，不管听了多少课都学不到东西的。</span></p><p>&nbsp;</p><p><span>正确的状态是：</span><span style="color:blue;font-weight:bold;"><span>对『Java本身』贼啦好奇</span></span><span>，</span><span style="color:blue;font-weight:bold;"><span>『挖空心思』</span></span><span>想闹明白到底是咋回事，谁不让我学我跟谁急。</span></p><p>&nbsp;</p><p><span>学会以后干活，</span><span style="color:blue;font-weight:bold;"><span>不给钱也干</span></span><span>，谁不让我干我跟谁急，然后肯定会干得特别好，</span><span style="color:blue;font-weight:bold;"><span>『意外』</span></span><span>赚了很多钱。</span></p><p>&nbsp;</p><p><span>任何成功都来自于</span><span style="color:blue;font-weight:bold;"><span>『内心深处强烈的渴求』</span></span><span>。而程序员的成功秘诀是</span><span style="color:blue;font-weight:bold;"><span>『敲代码本身即是最大幸福和最高奖赏』</span></span><span>。</span></p><p>&nbsp;</p><p><span>很多同学总是问学完Java用不用再学学大数据呀？Java干3年以后转型什么呀？</span></p><p>&nbsp;</p><p><span>其实Java也好，大数据也好，都是『路径』，不是『目标』。你的</span><span style="color:blue;font-weight:bold;"><span>『好奇心』</span></span><span>决定了你在这条路上能够走多远。而培训完的起薪都只是『起点』，前面说过了，三者中『起点』是最不重要的。</span></p><p>&nbsp;</p><p><span>在以后的学习中我们任何技术点都会通过提出问题的方式来引入，大家要留意这个环节，在揭示答案之前用这个问题问问自己，看看这个问题是否能在你的心里</span><span style="color:blue;font-weight:bold;"><span>引起共鸣</span></span><span>，</span><span style="color:blue;font-weight:bold;"><span>激发</span></span><span>你的</span><span style="color:blue;font-weight:bold;"><span>好奇心</span></span><span>，这是我们迈向成功的第一步。</span></p><p>&nbsp;</p><h3 id='②大脑的工作机制'><span>②大脑的工作机制</span></h3><h4 id='1大脑的结构'><span>[1]大脑的结构</span></h4><ul><li><span>最内层：爬行动物脑，只在乎吃饭和制造下一代，再复杂点的事情就理解不了了。</span></li><li><span>中间层：哺乳动物脑，感情中枢，很多哺乳动物都进化出了这一层大脑，所以你会感觉到你家狗狗对你非常有感情——相信我，那是真感情。</span></li><li><span>最外层：</span><span style="color:blue;font-weight:bold;"><span>大脑皮层</span></span><span>，人的理性思维在这里生成，语言、视觉、听觉、逻辑思维、空间想象力等等都在大脑皮层这里有专门的负责区域。其中学Java的时候要用到的理性思维是大脑皮层中的</span><span style="color:blue;font-weight:bold;"><span>『前额叶』</span></span><span>这个部分。可以说迄今为止人类文明所造就的所有辉煌成果都是建立在前额叶的基础上。</span></li></ul><p>&nbsp;</p><h4 id='2死记硬背'><span>[2]死记硬背？</span></h4><p><span>不会吧，不会吧？现在还有同学想靠死记硬背来学Java？请马上停止！</span></p><p>&nbsp;</p><p><span>相比较</span><span style="color:blue;font-weight:bold;"><span>『记忆』</span></span><span>来说，大脑更擅长</span><span style="color:blue;font-weight:bold;"><span>『思考』</span></span><span>。前面说过思考是由前额叶来负责的，下面说说记忆：</span></p><p>&nbsp;</p><ul><li><span>临时记忆：海马体。比如别人和你说忙完给他打个电话，你当时答应了但是一转眼就忘了。信息刚刚进入大脑的时候其实是在海马体临时存储的。</span></li><li><span>长期记忆：写入大脑皮层。这可不容易，死记硬背就是通过大量的重复把信息强行写入大脑皮层。就好比你非要靠脑子记住一个手机号，大致就是这个办法。但遗憾的是一个</span><span style="color:blue;font-weight:bold;"><span>孤立的信息</span></span><span>即使通过大量重复强行写入到大脑皮层也不会存在太久。小学同学朝夕相处，但是分开20年还是会忘记很多人的名字。</span></li></ul><p>&nbsp;</p><p><span>这就是为什么总有同学很困扰：学完了记不住呀！对于这个问题我的回应如下：</span></p><p>&nbsp;</p><ul><li><p><span>你想记住啥？</span></p><p><span>你想记住代码怎么写吗？需求会变，代码永远要跟着变。</span></p><p><span>你想记住老师说的每一句话吗？老师一天能说一万句话。</span></p><p><span>想记住这些这不是痴心妄想吗？</span></p></li><li><p><span>你该记住啥？</span></p><p><span>具象：3×2=6，2×3=6，4×7=28，7×4=28，……</span></p><p><span>抽象：乘法交换律</span></p><p><span>你该记住的是从现象中提取出来的规律而不是现象。甚至这么说也不准确。因为这个规律你</span><span style="color:blue;font-weight:bold;"><span>理解了自然就记住了</span></span><span>，不需要背。</span></p></li><li><p><span>知识的网络</span></p><p><span>任何孤立的信息都很容易忘，但是点和点之间组成一个彼此联系的</span><span style="color:blue;font-weight:bold;"><span>网络</span></span><span>就很</span><span style="color:blue;font-weight:bold;"><span>不容易忘</span></span><span>记了。</span></p></li><li><p><span>细节记不住咋办？</span></p><p><span>即使理解并且记住了要点，但是知识点相关的细节还是记不住怎么办？比如大段的配置，代码调用的API方法，特定场景需要传递的参数等等。好办，</span><span style="color:blue;font-weight:bold;"><span>『好记性不如烂笔头』</span></span><span>，这些东西记到笔记里永久保存。</span></p></li></ul><p>&nbsp;</p><h4 id='3外接硬盘'><span>[3]外接硬盘</span></h4><p><span>通过前面的分析我们看到，大脑是一个有CPU（前额叶）有内存（海马体）的电脑，但是没有硬盘来做永久存储。所以我们需要给大脑连接一个能够永久存储信息的外部设备：笔记。由此我们就得出了大脑要扮演的第一个角色：</span><span style="color:blue;font-weight:bold;"><span>搜索引擎</span></span><span>。</span></p><p><span>首先，学习的过程就是建设索引库的过程：</span></p><p><img src="images/img016.png" referrerpolicy="no-referrer" alt="images"></p><p><span>然后在解决实际问题时需要运用学过的知识就到索引库中去检索：</span></p><p><img src="images/img017.png" referrerpolicy="no-referrer" alt="images"></p><p>&nbsp;</p><h4 id='4快思维和慢思维'><span>[4]快思维和慢思维</span></h4><p><span>大脑的第二个角色是：</span><span style="color:blue;font-weight:bold;"><span>司令部</span></span><span>。而你是</span><span style="color:blue;font-weight:bold;"><span>司令</span></span><span>。对，你没看错，其实『你不是你的大脑，你的大脑也不是你』。就像手、脚、胯骨轴是你的一部分一样，大脑同样只是你的一部分。但是大脑对人来说太重要了，人的很多无意识行为都是大脑来协调和指挥的。比如：人走路时的身体平衡，身体各个系统和脏器的正常工作，应激反应等等都是大脑来指挥的，而这些事情你完全不知道是怎么做的，也无法干涉。</span><span style="color:blue;font-weight:bold;"><span>司令部协助司令指挥部队，司令把握总体的战略方向</span></span><span>。</span></p><p><span>而司令部这个角色和学习有关系的部分就是大脑的快思维和慢思维。</span></p><p><span>小孩子没法一边穿衣服、系扣子一边走路。因为它穿衣服、系扣子需要慢慢做，一边做一边想。所以事情不熟练、需要慢慢思考的时候，大脑就需要以慢思维的模式工作——这个过程是需要</span><span style="color:blue;font-weight:bold;"><span>『你』</span></span><span>参与的。</span></p><p><span>大人穿衣服、系扣子都很熟练了，不需要想，所以可以一边走路，一边穿衣服。这个过程就</span><span style="color:blue;font-weight:bold;"><span>不需要『你』参与</span></span><span>了，大脑调用现成的『路径』在快思维的工作模式下完成动作。</span></p><p><span>这是因为</span><span style="color:blue;font-weight:bold;"><span>『慢思维』</span></span><span>非常消耗能量，而</span><span style="color:blue;font-weight:bold;"><span>『快思维』</span></span><span>能耗非常低，大脑会优先选择能耗低的路径执行动作，节约能量。这就是为什么人会有</span><span style="color:blue;font-weight:bold;"><span>『习惯』</span></span><span>，而习惯一旦养成很难改变。本质原因就是大脑的这种</span><span style="color:blue;font-weight:bold;"><span>『路径依赖』</span></span><span>的机制。</span></p><p>&nbsp;</p><h3 id='③知识的知识元知识'><span>③知识的知识：元知识</span></h3><h4 id='1知识点'><span>[1]知识点</span></h4><p><span>比如：</span><span style="color:blue;font-weight:bold;"><span>『黄赤交角导致地球上四季更迭』</span></span><span>这就是一个知识点。</span></p><p><img src="images/img018.png" referrerpolicy="no-referrer" alt="images"></p><p>&nbsp;</p><h4 id='2前置知识'><span>[2]前置知识</span></h4><p><span>想理解『黄赤交角导致地球上四季更迭』这个知识点的前提是知道『赤道』、『黄道』、『地球自转』、『地球公转』等等概念，还必须具备一定的『立体几何』的基础。这就说明知识的大厦是一砖一瓦建成的，没有1楼别想上2楼。</span></p><p><img src="images/img019.png" referrerpolicy="no-referrer" alt="images"></p><p><span>如果想理解B的</span><span style="color:blue;font-weight:bold;"><span>前提</span></span><span>是知道A，那么A就是B的前置知识点。</span></p><p>&nbsp;</p><h4 id='3知识链'><span>[3]知识链</span></h4><p><img src="images/img020.png" referrerpolicy="no-referrer" alt="images"></p><p><span>把所有前置知识连起来就形成了一条知识的链条。虽然我们学习的时候不需要把这个链条画出来，但是它可以帮助你理解你</span><span style="color:blue;font-weight:bold;"><span>为什么会跟不上</span></span><span>：在知识的链条中前置知识点缺失太多了。不知道『赤道』、『黄道』、『地球自转』、『地球公转』等等概念也不理解两个平面之间的夹角是怎么回事的时候听别人给你讲地球上为什么会有春夏秋冬那就是听天书，完全不明白什么意思。</span></p><p>&nbsp;</p><h4 id='4知识树'><span>[4]知识树</span></h4><p><span>为什么老师讲课的课件总是划分成章节，章节里面还有一、二、三、……1、2、3、……①、②、③、……这样的小点？就是因为知识点根据彼此之间的归类和相关性可以『纵向抽取』，从而整理成一个树形结构，这样也是为了大家更好理解。</span></p><p><span>但是老师讲课的时候还是要从这根葡萄梗上把葡萄一颗一颗摘下来给你。</span></p><p><span>而你拿到葡萄以后就乱放了，散落一地的葡萄非常不好拿，到用的时候各种颜色的葡萄混杂的胡乱堆放在一起，根本找不到你要的。</span></p><p><span>所以大家听完课还是要在自己的精神世界里把葡萄往葡萄梗上一颗一颗装回去。用专业术语来说就是</span><span style="color:blue;font-weight:bold;"><span>把节点按照树形结构重新组装</span></span><span>起来。</span></p><p><img src="images/img021.jpg" referrerpolicy="no-referrer" alt="images"></p><p>&nbsp;</p><h4 id='5知识网络'><span>[5]知识网络</span></h4><p><span>哲学知识点：矛盾是对立统一，矛盾中对立的双方都不能脱离对方而单独存在。</span></p><p><span>化学知识点：在碱溶液中会有极少量的H</span><sup><span>+</span></sup><span>离子，在酸溶液中会有极少量的OH</span><sup><span>-</span></sup><span>离子。</span></p><p><span>横向来看，知识点之间很容易找到相通或类似的情况。有些知识点之间的横向对比能够彼此印证，帮助我们理解；而有些看起来相似但实质不同的知识点却会干扰我们的判断和使用。</span></p><p><span>所以</span><span style="color:blue;font-weight:bold;"><span>知识点融会贯通之后必然会打破彼此的界限连成网络，这个网络越发达你的视野越开阔，网络中的具体知识点掌握越牢固</span></span><span>。</span></p><p>&nbsp;</p><h4 id='6知识体系'><span>[6]知识体系</span></h4><p><span>在生物学中把生物划分为了界、门、纲、目、科、属、种，这有什么好处呢？不仅让已知的生物更易于研究和学习，将来发现新物种就直接按照这个划分方法</span><span style="color:blue;font-weight:bold;"><span>纳入体系</span></span><span>就好了。</span></p><p><img src="images/img022.gif" referrerpolicy="no-referrer" alt="images"></p><p>&nbsp;</p><p><span>有了知识体系之后，你的学习会非常快速，因为新的知识点会快速被已有的知识体系接纳，旧的知识会帮助你理解新的知识。</span></p><p>&nbsp;</p><figure><table><thead><tr><th>&nbsp;</th><th><span>MySQL</span></th><th><span>Redis</span></th></tr></thead><tbody><tr><td><span>数据库连接</span></td><td><span>Connection</span></td><td><span>Jedis</span></td></tr><tr><td><span>数据库连接池</span></td><td><span>Druid</span></td><td><span>JedisPool</span></td></tr><tr><td><span>连接信息</span></td><td><span>主协议:子协议://主机地址:端口号/数据库名称</span><br><span>用户名</span><br><span>密码</span><br><span>数据库驱动</span></td><td><span>主机地址:端口号</span></td></tr></tbody></table></figure><p>&nbsp;</p><p><span>当你不断的感受到旧知识点在帮助你理解新知识点，你的知识体系就在不断扩大；知识系统不断扩大之后，旧知识点对新知识点的帮助能力就更大，形成一个</span><span style="color:blue;font-weight:bold;"><span>『增强回路』</span></span><span>，让你的学习越来越快，形成一条指数曲线。</span></p><p><img src="images/img023.png" referrerpolicy="no-referrer" alt="images"></p><p>&nbsp;</p><h3 id='④卖油翁的微笑'><span>④卖油翁的微笑</span></h3><blockquote><p><span>陈康肃公善射，当世无双 ，公亦以此自矜。尝射于家圃，有卖油翁释担而立，睨之久而不去。见其发矢十中八九，但微颔之。</span>
+<span>康肃问曰：“汝亦知射乎？吾射不亦精乎？”。翁曰：“无他， 但手熟尔。”康肃忿然曰：“尔安敢轻吾射！”翁曰：“以我酌油知之。”乃取一葫芦置于地，以钱覆其口，徐以杓酌油沥之，自钱孔入，而钱不湿。因曰：“我亦无他，惟手熟尔。”康肃笑而遣之。</span></p></blockquote><p><span>编程本质上是一个技能，而任何技能都需要通过大量的重复练习才能够熟练掌握。李小龙说：</span><span style="color:blue;font-weight:bold;"><span>『我不怕会一万种招式的人，我怕把一种招式练一万次的人』</span></span><span>。神枪手是用一匣一匣的子弹喂出来的，优秀的程序员就是用一堆又一堆的bug给练出来的。所以学编程肯定要多敲多练。</span></p><p><span>但是我说的是</span><span style="color:blue;font-weight:bold;"><span>『敲』</span></span><span>不是</span><span style="color:blue;font-weight:bold;"><span>『抄』</span></span><span>！很多同学照着老师的代码敲自己的代码，看着是敲了一遍，其实只是抄了一遍。抄完发现没有什么效果。关上电脑什么都不记得。这其实是正常的认知规律的体现。</span></p><p><span>在『抄』的时候大脑其实不需要多想什么，因为它只需要考虑A处是什么单词，再到B处敲同样的单词就行了，这是一件很简单的事情，大脑调用5%就足够了——这调用深度远远不够。而且你不觉得非常枯燥无聊吗？</span></p><p><span>真正的学习状态是什么？向知识点提问、打草稿、分析思路、画流程图、和别人讨论、敲代码验证、分析结果为什么和老师不一样、把验证结果写到笔记里……</span></p><p><span>你看看这是不是</span><span style="color:blue;font-weight:bold;"><span>热火朝天</span></span><span>？这么整的话大脑的利用率可是有95%啊！而且</span><span style="color:blue;font-weight:bold;"><span>兴趣盎然</span></span><span>啊有木有？这么学习既高效又开心，谁不让我学我和谁急！</span></p><p><span>这时大脑扮演了第三个角色：</span><span style="color:blue;font-weight:bold;"><span>教练</span></span><span>。</span></p><p>&nbsp;</p><h3 id='⑤输出倒逼输入'><span>⑤输出倒逼输入</span></h3><p><span>你有没有发现看老师讲课的视频特别容易睡着？这不是老师讲得不好，也不是你不爱学习，而是单纯的看视频只是被动接受，大脑还是没有充分调动起来。大脑进入闲置状态自然会</span><span style="color:blue;font-weight:bold;"><span>昏昏欲睡</span></span><span>。</span></p><p><span>而当你和别人讨论问题，把你的观点讲出来，就会越聊越兴奋甚至争得脸红脖子粗有木有？</span></p><p><span>甚至是在和别人表达自己观点的时候会发现自己以前理解的某个知识点其实完全不是那么回事，开始以为自己懂了但是要说的时候才发现自己根本没有懂，理解的不透彻。</span></p><p><span>其实在大脑里很多角落都在黑暗中，当我们想拿出来的时候才会用手电筒照过去，把那个地方</span><span style="color:blue;font-weight:bold;"><span>照亮</span></span><span>，照亮以后才能</span><span style="color:blue;font-weight:bold;"><span>看清楚</span></span><span>那里到底放着什么。</span></p><p><span>所以一切形式的</span><span style="color:blue;font-weight:bold;"><span>『输出』</span></span><span>都会非常有效的提高学习效率。那么输出的形式包括哪些呢？</span></p><ul><li><span>做笔记：自己亲手做，不是抄别人的。</span></li><li><span>敲代码：不是抄啊！</span></li><li><span>和别人讨论：有问有答的那种</span></li><li><span>调bug：bug虐我千百遍，我待bug如初恋</span></li><li><span>发博客：积累多了对职业发展很有帮助的哟</span></li></ul><p>&nbsp;</p><h3 id='⑥总结'><span>⑥总结</span></h3><p><span>说了这么多，我们具体在学习的时候应该怎么学呢？</span></p><ul><li><span>第一步：提出问题，激发好奇。</span></li><li><span>第二步：思考分析，理解原理。</span></li><li><span>第三步：敲代码、调bug练习，验证原理，修正理解。</span></li><li><span>第四步：做笔记，既是备忘，又是建设自己的索引库和知识体系。</span></li><li><span>第五步：遇到相似知识点就详细辨析比对，直到充分区别不会混淆。</span></li><li><span>第六步：回归到真实场景，在项目中运用，彻底掌握这个技术，让所学技术真正落地。</span></li></ul><p><span>所以</span><span style="color:blue;font-weight:bold;"><span>『学习』</span></span><span>两个字中，</span><span style="color:blue;font-weight:bold;"><span>『学』</span></span><span>指的是理解原理，建立知识体系，而</span><span style="color:blue;font-weight:bold;"><span>『习』</span></span><span>则是练习技能，引申到各种形式的输出都算</span><span style="color:blue;font-weight:bold;"><span>『习』</span></span><span>。而只有拿学过、练过的东西真正的解决了现实生活中真正的实际问题才算是</span><span style="color:red;font-weight:bold;"><span>『会』</span></span><span>。而任何形式的市场都只会为能够真正解决问题的人付</span><span style="color:green;font-weight:bold;"><span>『钱』</span></span><span>。</span></p><p>&nbsp;</p><p><a href='verse03.html'><span>上一节</span></a><span> </span><a href='index.html'><span>回目录</span></a></p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>

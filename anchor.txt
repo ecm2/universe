@@ -1,0 +1,23 @@
+[第一节 ](verse01.html)
+
+[第二节 ](verse02.html)
+
+[第三节 ](verse03.html)
+
+[第四节 ](verse04.html)
+
+[回目录](../index.html) [下一章](../chapter02/index.html)
+[上一章](../chapter01/index.html) [回目录](../index.html) [下一章](../chapter03/index.html)
+[上一章](../chapter08/index.html) [回目录](../index.html)
+
+[回目录](index.html) [下一节](verse02.html)
+[上一节](verse01.html) [回目录](index.html) [下一节](verse03.html)
+[上一节](verse04.html) [回目录](index.html)
+
+[回目录](../verse03.html) [下一个实验](experiment02.html)
+[上一个实验](experiment01.html) [回目录](../verse03.html) [下一个实验](experiment03.html)
+[上一个实验](experiment04.html) [回目录](../verse03.html)
+
+[回目录](../verse06.html) [下一个功能](feature02.html)
+[上一个功能](feature01.html) [回目录](../verse06.html) [下一个功能](feature03.html)
+[上一个功能](feature04.html) [回目录](../verse06.html)
